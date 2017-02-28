@@ -43,15 +43,17 @@ def main():
         templates.add(tmpl)
 
     print(len(templates), 'templates')
-#    print('\n'.join(templates.pop()))
 
     for input_source in args.inputs:
         for fn, contents in utils.find_files(input_source, ext='.xd'):
             xd = xdfile.xdfile(contents.decode('utf-8'), fn)
-            for T in templates:
+            for i, T in enumerate(templates):
                 griddedxd = fit_template(T, xd)
                 if griddedxd:
-                    print(griddedxd.to_unicode())
+                    with open(args.output + ('-t%s.xd' % i), 'w') as fp:
+                        fp.write(griddedxd.to_unicode())
 
 
-main()
+
+if __name__ == '__main__':
+    main()
