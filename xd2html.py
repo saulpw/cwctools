@@ -62,7 +62,7 @@ def to_html(xd):
             contents = ""
             if cluenum == "#":
                 classes += 'block '
-                grid_html += '<td id="r%dc%d" class="block"><div class="blockinner"><img src="blackdot.png"/></div></td>' % (c+1, r+1)
+                grid_html += '<td id="r%dc%d" class="block"><div class="blockinner"><img src="../blackdot.png"/></div></td>' % (c+1, r+1)
                 continue
             elif cluenum:
                 classes += 'numbered '
@@ -84,7 +84,7 @@ html1 = '''<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http:
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<link rel="StyleSheet" type="text/css" href="style.css"/>
+<link rel="StyleSheet" type="text/css" href="../style.css"/>
 
 <title>Crossword {xdid}: {Title}</title>
 
