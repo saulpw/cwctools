@@ -1,6 +1,6 @@
 TEST_HTML=js-ipuz-player/test.html
 
-all: $(TEST_HTML) js-ipuz-player/saulpw-008.html
+all: $(TEST_HTML)
 
 %.ipuz: %.xd
 	./xd2ipuz.py $< > $@
