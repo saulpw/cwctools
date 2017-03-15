@@ -42,9 +42,10 @@ h2 {
 #grid td .cell {
     position: absolute;
     top: 8px;
-    font-size: 16px;
+    font-size: 14px;
     font-family: sans-serif;
     color: blue;
+    text-transform: uppercase;
 }
 
 #grid td .number {

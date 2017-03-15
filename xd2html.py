@@ -23,6 +23,7 @@ def to_html(xd):
             'Title': '',
             'Copyright': '',
             'Author': '',
+            'Checksum': '',
             'notes': xdfile.html.markup_to_html(xd.notes.replace('\n', '<br><br>'))
            }
     hdrs['height'] = xd.height()
@@ -74,7 +75,14 @@ def to_html(xd):
     grid_html += "</table></div>"
 
     hdrs["Grid"] = grid_html
-#    hdrs["ccxml"] = json.dumps(" ".join(ccxml.strip().split("\n")))
+
+    checksum = 0
+    for row in xd.grid:
+        for c in row:
+            if c != '#':
+                checksum += ord(c[0])
+
+    hdrs["Checksum"] = checksum
 
     return html1.format(**hdrs)
 
@@ -88,8 +96,8 @@ html1 = '''<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http:
 
 <title>Crossword {xdid}: {Title}</title>
 
-</HEAD>
-<BODY TEXT="#000000" BGCOLOR="#ffffff">
+</head>
+<body>
 
 <table class="crossword">
 <!--tr><td>{notes}</td></tr-->
@@ -100,7 +108,7 @@ html1 = '''<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http:
 <table id="main">
 <tr>
     <td id="leftclues" class="clue">{LeftClues}</td>
-    <td id="grid">{Grid}</td>
+    <td id="grid" checksum="{Checksum}">{Grid}</td>
 </tr>
 <tr>
     <td colspan="2" id="bottomclues" class="clue">
